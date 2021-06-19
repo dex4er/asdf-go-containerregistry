@@ -16,11 +16,11 @@ install() {
   local bin_install_path="$install_path/bin"
 
   local platform
-  platform=$(uname | tr '[:upper:]' '[:lower:]')
+  platform=$(uname)
 
   local arch
   case "$(uname -m)" in
-    i386|i686|x86) arch="386";;
+    i386|i686|x86) arch="i386";;
     x86_64) arch="amd64";;
     aarch64) arch="arm64";;
     *) arch="$(uname -m)"
