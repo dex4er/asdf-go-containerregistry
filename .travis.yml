@@ -5,4 +5,4 @@ before_script:
 script:
   - asdf plugin-add vals ./
   - asdf list-all vals
-  - asdf plugin-test vals ./ 'vals --version'
+  - asdf plugin-test vals ./ 'gcrane version'
