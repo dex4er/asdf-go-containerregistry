@@ -88,7 +88,7 @@ function install() {
 	mkdir -p "${bin_install_path}"
 
 	tar zxf "${download_filename}"
-	find . -type f -executable -print0 | xargs -0 -I {} cp -fp {} "${bin_install_path}"
+	find . -type f -perm +111 -print0 | xargs -0 -I {} cp -fp {} "${bin_install_path}"
 
 	popd >/dev/null
 }
