@@ -37,7 +37,7 @@ function install() {
 	local bin_install_path="${install_path}/bin"
 
 	local platform
-	platform=$(uname -s | tr '[:upper:]' '[:lower:]')
+	platform=$(uname -s)
 
 	local arch
 	arch=$(uname -m)
