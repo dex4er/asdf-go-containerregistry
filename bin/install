@@ -28,11 +28,7 @@ function install() {
 
 	local tmp_download_dir
 
-	if [[ -z ${TMPDIR-} ]]; then
-		tmp_download_dir=$(mktemp -d)
-	else
-		tmp_download_dir=${TMPDIR%/}
-	fi
+	tmp_download_dir=$(mktemp -d -t asdf)
 
 	local bin_install_path="${install_path}/bin"
 
@@ -71,6 +67,7 @@ function install() {
 		checksum_url="https://github.com/${repo}/releases/download/${prefix}${version}/${checksum_filename}"
 	fi
 
+	set -x
 	echo "Downloading ${download_filename} from release ${prefix}${version} from ${download_url}"
 
 	mkdir -p "${tmp_download_dir}"
@@ -88,7 +85,7 @@ function install() {
 	mkdir -p "${bin_install_path}"
 
 	tar zxf "${download_filename}"
-	find . -type f -perm +111 -print0 | xargs -0 -I {} cp -fp {} "${bin_install_path}"
+	find "${tmp_download_dir}" -type f -perm +100 -print0 | xargs -0 -I {} cp -fp {} "${bin_install_path}"
 
 	popd >/dev/null
 }
