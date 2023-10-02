@@ -67,7 +67,6 @@ function install() {
 		checksum_url="https://github.com/${repo}/releases/download/${prefix}${version}/${checksum_filename}"
 	fi
 
-	set -x
 	echo "Downloading ${download_filename} from release ${prefix}${version} from ${download_url}"
 
 	mkdir -p "${tmp_download_dir}"
