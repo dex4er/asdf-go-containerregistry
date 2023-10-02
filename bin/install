@@ -28,7 +28,7 @@ function install() {
 
 	local tmp_download_dir
 
-	tmp_download_dir=$(mktemp -d -t asdf)
+	tmp_download_dir=$(mktemp -d -t asdf.XXXXXXXX)
 
 	local bin_install_path="${install_path}/bin"
 
